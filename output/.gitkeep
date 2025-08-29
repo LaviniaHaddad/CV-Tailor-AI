@@ -1,0 +1,3 @@
+# Execute no terminal dentro da pasta do projeto:
+mkdir outputs
+touch outputs/.gitkeep

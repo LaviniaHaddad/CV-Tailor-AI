@@ -1,0 +1,5 @@
+jinja2
+pdfkit
+scikit-learn
+numpy
+pandas

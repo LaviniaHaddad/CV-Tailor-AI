@@ -1,0 +1,44 @@
+{
+  "nome": "Lavinia Haddad",
+  "contato": {
+    "email": "laviniahaddad@hotmail.com",
+    "linkedin": "linkedin.com/in/lavinia-haddad",
+    "github": "github.com/LaviniaHaddad",
+    "portfolio": "laviniahaddad.wixsite.com/lavinia-haddad"
+  },
+  "resumo": "Analista de Dados com experiência em transformar dados complexos em insights estratégicos para apoio à decisão. Expertise em desenvolvimento de dashboards no Power BI, automação de processos e relatórios com Python, manipulação e análise de dados com SQL e aplicação de técnicas de Machine Learning para modelagem preditiva.",
+  "habilidades_tecnicas": [
+    "Python",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "SQL",
+    "Power BI",
+    "DAX",
+    "ETL",
+    "Machine Learning",
+    "Streamlit",
+    "Git"
+  ],
+  "experiencias": [
+    {
+      "cargo": "Auxiliar de BI",
+      "empresa": "Coelho Contabilidade",
+      "periodo": "Abr 2024 - Mar 2025",
+      "local": "Porto Seguro, Bahia, Brasil",
+      "realizacoes": [
+        "Implementei um novo sistema financeiro com automação de envios fiscais, reduzindo erros e diminuindo o tempo operacional em 4 horas por semana.",
+        "Desenvolvi e mantive dashboards no Power BI para monitoramento de KPIs financeiros e contábeis, melhorando a visibilidade dos dados para a equipe.",
+        "Realizei análise de evolução patrimonial e fluxo de caixa para clientes, identificando tendências e oportunidades."
+      ]
+    }
+  ],
+  "projetos": [
+    {
+      "nome": "Sistema de Recomendação de Filmes com NLP",
+      "descricao": "Construí um sistema de recomendação baseado em conteúdo do zero. Utilizei técnicas de Processamento de Linguagem Natural (NLP) com TF-IDF para converter as sinopses (overview) e gêneros dos filmes em vetores numéricos.",
+      "tecnologias": ["Python", "Pandas", "Scikit-learn", "NLP", "Cosine Similarity"],
+      "link": "https://github.com/LaviniaHaddad/TMDb-IA"
+    }
+  ]
+}
