@@ -33,52 +33,61 @@ class CurriculoExtractor:
             return ""
     
     def extrair_secoes_curriculo(self, texto):
-        """Extrai seções automaticamente do texto do currículo"""
+        """Extrai seções automaticamente do texto do currículo com lógica melhorada"""
         secoes = {
+            "contato": [],
+            "resumo": [],
             "experiencias": [],
             "educacao": [],
             "habilidades": [],
-            "projetos": []
+            "projetos": [],
+            "idiomas": []
         }
         
-        doc = self.nlp(texto)
-        
-        # Padrões simples para extração (podemos melhorar depois)
         linhas = texto.split('\n')
-        current_section = None
+        secao_atual = None
         
         for linha in linhas:
             linha = linha.strip()
-            if not linha:
+            if not linha or len(linha) < 2:
                 continue
             
-            # Detecta seções
-            lower_line = linha.lower()
-            if any(palavra in lower_line for palavra in ["experiência", "experiencia", "empregos", "profissional"]):
-                current_section = "experiencias"
-            elif any(palavra in lower_line for palavra in ["educação", "educacao", "formação", "acadêmico"]):
-                current_section = "educacao"
-            elif any(palavra in lower_line for palavra in ["habilidades", "competências", "skills", "tecnologias"]):
-                current_section = "habilidades"
-            elif any(palavra in lower_line for palavra in ["projetos", "portfólio", "portfolio"]):
-                current_section = "projetos"
+            linha_lower = linha.lower()
             
-            # Adiciona conteúdo à seção atual
-            elif current_section and len(linha) > 10:  # Ignora linhas muito curtas
-                if current_section == "habilidades" and any(char.isdigit() for char in linha):
-                    continue  # Provavelmente é uma data, não habilidade
-                
-                secoes[current_section].append(linha)
+            # Detecta seções pelos cabeçalhos
+            for secao, palavras_chave in {
+                "contato": ["email", "telefone", "linkedin", "github", "celular"],
+                "resumo": ["resumo", "objetivo", "about", "summary"],
+                "experiencias": ["experiência", "experiencia", "profissional", "empregos"],
+                "educacao": ["educação", "educacao", "formação", "formacao", "acadêmico"],
+                "habilidades": ["habilidades", "competências", "skills", "tecnologias"],
+                "projetos": ["projetos", "portfólio", "portfolio"],
+                "idiomas": ["idiomas", "línguas", "linguas", "inglês", "espanhol"]
+            }.items():
+                if any(palavra in linha_lower for palavra in palavras_chave):
+                    secao_atual = secao
+                    break
+            
+            # Se não é um cabeçalho de seção, adiciona ao conteúdo
+            if secao_atual and len(linha) > 5:  # Ignora linhas muito curtas
+                # Filtra linhas que são provavelmente conteúdo válido
+                if not any(linha_lower.startswith(prefix) for prefix in ['página', 'page', 'http', 'www.']):
+                    if secao_atual not in secoes:
+                        secoes[secao_atual] = []
+                    secoes[secao_atual].append(linha)
         
-        return secoes
+        return secoes 
     
     def processar_pasta_curriculos(self, pasta_curriculos):
         """Processa todos os currículos de uma pasta"""
         todos_dados = {
+            "contato": [],
+            "resumo": [],
             "experiencias": [],
             "educacao": [],
             "habilidades": [],
-            "projetos": []
+            "projetos": [],
+            "idiomas": []
         }
         
         for arquivo in os.listdir(pasta_curriculos):
@@ -97,7 +106,8 @@ class CurriculoExtractor:
                 
                 # Combina os dados de todos os currículos
                 for secao, itens in secoes.items():
-                    todos_dados[secao].extend(itens)
+                    if secao in todos_dados:  # Só adiciona se a chave existir
+                        todos_dados[secao].extend(itens)
         
         # Remove duplicatas
         for secao in todos_dados:

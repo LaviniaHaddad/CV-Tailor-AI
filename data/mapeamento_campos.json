@@ -1,0 +1,16 @@
+{
+  "secoes_curriculo": [
+    "resumo", "objetivo", "experiência", "experiencia", "educação", "educacao", 
+    "formação", "formacao", "habilidades", "competências", "competencia", 
+    "skills", "tecnologias", "projetos", "portfólio", "portfolio",
+    "certificações", "certificacao", "idiomas", "contato"
+  ],
+  "palavras_chave_experiencia": [
+    "analista", "desenvolvedor", "desenvolvimento", "implementei", "criei",
+    "liderei", "gerenciei", "responsável", "realizei", "atu", "atuando"
+  ],
+  "palavras_chave_educacao": [
+    "graduação", "graduacao", "bacharel", "tecnólogo", "tecnologo",
+    "curso", "certificação", "certificacao", "formação", "formacao"
+  ]
+}

@@ -39,7 +39,8 @@ def main():
         "contato": {
             "email": "laviniahaddad@hotmail.com",
             "linkedin": "linkedin.com/in/lavinia-haddad",
-            "github": "github.com/LaviniaHaddad"
+            "github": "github.com/LaviniaHaddad",
+            "telefone": "+55 (11) 98404-3190"
         },
         "resumo": "Analista de Dados com experiência em transformar dados complexos em insights estratégicos.",
         "habilidades_tecnicas": dados["habilidades"] if "habilidades" in dados else [],
