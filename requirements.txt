@@ -3,3 +3,6 @@ pdfkit
 scikit-learn
 numpy
 pandas
+python-docx
+pdfplumber
+spacy
